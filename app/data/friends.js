@@ -16,7 +16,7 @@ let friends = [
         ]
     },
     {
-        "name": "dog",
+        "name": "Dog",
         "photo": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.wikihow.com%2Fimages%2F6%2F64%2FStop-a-Dog-from-Jumping-Step-6-Version-2.jpg&f=1&nofb=1",
         "scores": [
             2,
@@ -32,7 +32,7 @@ let friends = [
         ]
     },
     {
-        "name": "capybara",
+        "name": "Capybara",
         "photo": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.boredpanda.com%2Fblog%2Fwp-content%2Fuploads%2F2016%2F04%2Fcapybara-unusual-animal-friendship-fb.png&f=1&nofb=1",
         "scores": [
             5,
