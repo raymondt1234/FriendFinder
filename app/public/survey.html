@@ -174,8 +174,16 @@
                     ]
                 }
 
-                console.log(surveyData);
+                $.post("/api/friends", surveyData, function(data){
+                    let friend = JSON.parse(data);
+
+                    $(document.body).append("<div id='friend'></div>");
+                    $("#friend").append("<h2>Best Match</h2>");
+                    $("#friend").append(`<h3>${friend.name}</h3>`);
+                    $("#friend").append(`<img src="${friend.photo}">`);
+                });
             });
+
         });
     </script>
 </body>
