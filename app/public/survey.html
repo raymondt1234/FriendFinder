@@ -7,12 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Survey</title>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -147,9 +145,39 @@
     </div>
     <br>
 
+    <!-- Modal -->
+
+    <div class="modal fade" id="surveyModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="surveyModalLabel">Best Match</h5>
+                    <button type="button" class="close close-button">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="matchImg" class="img-fluid" src="" alt="">
+                    <p id="matchName"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button btn btn-secondary">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
 
     </footer>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Javascript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
     <!-- Javascript to submit the survey -->
     <script>
@@ -174,16 +202,20 @@
                     ]
                 }
 
-                $.post("/api/friends", surveyData, function(data){
+                $.post("/api/friends", surveyData, function (data) {
                     let friend = JSON.parse(data);
 
-                    $(document.body).append("<div id='friend'></div>");
-                    $("#friend").append("<h2>Best Match</h2>");
-                    $("#friend").append(`<h3>${friend.name}</h3>`);
-                    $("#friend").append(`<img src="${friend.photo}">`);
+                    $("#matchImg").attr("src", friend.photo);
+                    $("#matchImg").attr("alt", friend.name);
+                    $("#matchName").html(friend.name);
+
+                    $("#surveyModal").modal("show");
                 });
             });
 
+            $(".close-button").click(function () {
+                $("#surveyModal").modal("hide");
+            });
         });
     </script>
 </body>
